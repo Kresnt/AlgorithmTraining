@@ -57,27 +57,27 @@ def save_problem(q):
     f.write(pc)
 
 def parsedContent(q):
-  pc = "\n# " + q["questionFrontendId"] +"."+ q["translatedTitle"]+"\n"
-  pc += "[" +q["questionFrontendId"] +"."+ q["translatedTitle"] +"](" + "https://leetcode-cn.com/problems/" + q["title"].replace(' ','-')  +")\n\n"
+  pc = "\n## " + q["questionFrontendId"] +"."+ q["translatedTitle"]+"\n\n"
+  pc += "题目链接：[" +q["questionFrontendId"] +"."+ q["translatedTitle"] +"](" + "https://leetcode-cn.com/problems/" + q["title"].replace(' ','-')  +")\n\n"
   h = html2text.HTML2Text()
   pc += h.handle(q["translatedContent"])
   p = pc.find("**示例 1：**")
   if p != -1:
-    pc =  pc[:p-1] + "## 样例输入与样例输出 Sample Input and Sample Output\n" + pc[p:]
+    pc =  pc[:p-1] + "### 样例输入与样例输出 Sample Input and Sample Output\n" + pc[p:]
   p = pc.find("**提示：**")
   if p != -1:
-    pc =  pc[:p-1] + "## 提示 Hint\n" + pc[p:]
-  pc += "\n## 代码\n"
+    pc =  pc[:p-1] + "### 提示 Hint\n" + pc[p:]
+  pc += "\n### 题解\n"
   return pc
 
 def main():
   global filename
-  filename = u"weekly-contest-167"+ ".md"
+  filename = u"biweekly-contest-28"+ ".md"
   urlList = [
-    "convert-binary-number-in-a-linked-list-to-integer",
-    "sequential-digits",
-    "maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold",
-    "shortest-path-in-a-grid-with-obstacles-elimination",
+    "final-prices-with-a-special-discount-in-a-shop",
+    "subrectangle-queries",
+    "find-two-non-overlapping-sub-arrays-each-with-target-sum",
+    "allocate-mailboxes",
   ]
   for prob in urlList:
     get(prob)

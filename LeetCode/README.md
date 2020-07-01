@@ -9,6 +9,7 @@
 | 5136 | [矩形内船只的数目](./5136.number-of-ships-in-a-rectangle.ac.cpp) |
 | 5275 | [找出井字棋的获胜者](./5275.find-winner-on-a-tic-tac-toe-game.ac.cpp) |
 | 5278 | [分割回文串 III](./5278.palindrome-partitioning-iii.ac.cpp)  |
+|  23  | [合并K个排序链表](./23.merge-k-sorted-lists.ac.cpp)  |
 
 ## 比赛
 
