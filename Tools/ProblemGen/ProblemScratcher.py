@@ -63,21 +63,18 @@ def parsedContent(q):
   pc += h.handle(q["translatedContent"])
   p = pc.find("**示例 1：**")
   if p != -1:
-    pc =  pc[:p-1] + "### 样例输入与样例输出 Sample Input and Sample Output\n" + pc[p:]
+    pc =  pc[:p-1] + "### 示例 Sample\n" + pc[p:]
   p = pc.find("**提示：**")
   if p != -1:
-    pc =  pc[:p-1] + "### 提示 Hint\n" + pc[p:]
-  pc += "\n### 题解\n"
+    pc =  pc[:p-1] + pc[p:]
+  pc += "\n### 我的题解\n"
   return pc
 
 def main():
   global filename
-  filename = u"biweekly-contest-28"+ ".md"
+  filename = u"20200904_1015"+ ".md"
   urlList = [
-    "final-prices-with-a-special-discount-in-a-shop",
-    "subrectangle-queries",
-    "find-two-non-overlapping-sub-arrays-each-with-target-sum",
-    "allocate-mailboxes",
+    "binary-tree-paths"
   ]
   for prob in urlList:
     get(prob)

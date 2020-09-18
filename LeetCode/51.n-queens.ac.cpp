@@ -1,51 +1,35 @@
-#include<bits/stdc++.h>
-
-using namespace std;
+#pragma G++ optimize(2)
+#pragma GCC optimize(2)
 
 class Solution {
  public:
+  vector<vector<string>> ans;
+  vector<int> status;
+  int n;
 
-  Solution() {}
-  vector<vector<int> >ans;
-  vector<vector<string> > totalNQueens(int n) {
-    ans.clear();
-    DFS(0, n, vector<int> {});
-    int ret = ans.size();
-    return ret;
-  }
-
-  vector<string> trans(vector<int>&r) {
-    const int n = r.size();
-    vector<string>ret(n, string(n, '.'));
-    for(int i = 0; i < n; ++i) {
-      ret[i][r[i]] = 'Q';
-    }
-    return ret;
-  }
-
-  void DFS(int s, const int n, vector<int>v) {
-    if(s == n) {
-      ans.push_back(vector<int>(v));
+  void gao(int s, int main, int counter, int col) {
+    if (s == n) {
+      vector<string> str(n, string(n, '.'));
+      for (int i = 0; i < n; ++i) str[i][status[i]] = 'Q';
+      ans.emplace_back(str);
       return;
     }
-    for(int i = 0; i < n; ++i) {
-      bool f = true;
-      for(int j = 0; f && j < v.size(); j++) {
-        if(v[j] == i || v[j] + s - j == i || v[j] - s + j == i) {
-          f = false;
-          break;
-        }
-      }
-      if(f) {
-        v.push_back(i);
-        DFS(s + 1, n, v);
-        v.pop_back();
+
+    int a = ~(col | (main >> 1) | (counter << 1));
+    a &= (1 << n) - 1;
+    for (int p = 1, i = 0; p < (1 << n); p <<= 1, i++) {
+      if (p & a) {
+        status.emplace_back(i);
+        gao(s + 1, (main >> 1) | p, (counter << 1) | p, col | p);
+        status.pop_back();
       }
     }
   }
-};
 
-int main() {
-  Solution sol;
-  sol.totalNQueens(4);
-}
+  vector<vector<string>> solveNQueens(int _n) {
+    n = _n;
+    ans.clear();
+    gao(0, 0, 0, 0);
+    return ans;
+  }
+};

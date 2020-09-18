@@ -7,7 +7,8 @@ class Solution {
       for(int j = 0; j < B.size() && i + j < (int)A.size(); ++j) {
         if(i + j >= 0 && A[i + j] == B[j]) {
           c++;
-          if(ans < c) ans = c;
+          if(ans < c)
+            ans = c;
         } else {
           c = 0;
         }
