@@ -1,0 +1,23 @@
+Language: Cpp
+
+# 基于某一主题上的修改
+BasedOnStyle: Google
+
+# 缩进统一使用2个空格代替制表符（Tab）
+UseTab: Never
+IndentWidth: 2
+
+# 每行字符的限制，0表示没有限制
+ColumnLimit: 120
+
+# 允许短的if语句保持在同一行
+AllowShortIfStatementsOnASingleLine: true
+
+# 允许排序#include
+SortIncludes: true
+
+# 允许短的循环保持在同一行
+AllowShortLoopsOnASingleLine: true
+
+#The maximum number of consecutive empty lines to keep.
+MaxEmptyLinesToKeep: 2
